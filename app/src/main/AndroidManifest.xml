@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+
+    <!-- 接收开机广播 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- 如果需要系统app常驻内存，添加android:persistent="true" -->
+    <!-- 如果需要开机启动app（锁屏状态），添加android:directBootAware="true" -->
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:directBootAware="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AIdockScreenApp">
+
+        <!-- 接收开机广播 -->
+        <!-- 如果需要在锁屏的状态下接收开机广播： -->
+        <!-- 1. 添加android:directBootAware="true" -->
+        <!-- 2. 添加<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" /> -->
+        <receiver
+            android:name=".BootReceiver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 如果需要开机启动服务（锁屏状态），添加android:directBootAware="true" -->
+        <service
+            android:name=".RecordingService"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+</manifest>
