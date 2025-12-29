@@ -68,16 +68,16 @@ public class RecordingService extends Service {
 
             // --- 音频配置 (系统内录) ---
             // REMOTE_SUBMIX 是关键，它录制“混合后的音频流”，即扬声器发出的声音
-            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX);
+//            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX);
 
             // --- 视频配置 (Surface) ---
             mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
             mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 
             // --- 编码设置 ---
-            mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
-            mMediaRecorder.setAudioEncodingBitRate(128000);
-            mMediaRecorder.setAudioSamplingRate(44100);
+//            mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+//            mMediaRecorder.setAudioEncodingBitRate(128000);
+//            mMediaRecorder.setAudioSamplingRate(44100);
 
             mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
             mMediaRecorder.setVideoEncodingBitRate(VIDEO_BITRATE);

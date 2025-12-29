@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 public class MyLocalServer extends Thread {
-    private static final String TAG = "TestLocalSocket";
+    private static final String TAG = "aidock-screen-socket";
     private LocalServerSocket serverSocket;
     private boolean isRunning = true;
     private PrintWriter pw;
